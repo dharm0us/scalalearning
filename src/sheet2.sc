@@ -17,4 +17,22 @@ object sheet2 {
   ('A' + 'B' + 'C')
   ('A' + 'B' + 'C').toInt
   'A'.toInt
+
+  val x = -2
+  val test = if(x > 0) "something" else -1
+  /*
+  If has a return type and value.
+  Type is the common supertype of both the branches.
+  Any is like Object of Java
+   */
+
+  val test1 = if(x>0) "hey"//() is like void of java but it has a value ()
+  val result = ()
+
+  //blocks are also expressions
+  val distance = {
+    val a = 7
+    val b = 7
+    a + b
+  }
 }
