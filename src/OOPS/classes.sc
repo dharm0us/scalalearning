@@ -8,6 +8,12 @@ println(f" welcome to (${x}, ${y})")
   override def toString: String = f"(${x}, ${y})"
 }
 
+object Point { //companion object, for static methods
+  def apply(x:Double, y:Double) = new Point(x,y)
+}
+//look mama, no new!
+Point(8,8) * 4
+
 val p = new Point(3, 4)
 val p1 = new Point()
 p.distanceFromOrigin /*
@@ -32,3 +38,14 @@ new Point(3,4).*(2)
 1.to(10).map(_*3).filter(_ % 5 == 2)
 
 //map(key) is map.apply(key)
+
+object Account { //use object for singleton, static methods
+  private var lastNumber = 0
+  def newUniqueNumber() = {lastNumber += 1; lastNumber}
+  //Convention: use () since it mutates state
+}
+
+Account.newUniqueNumber()
+Account.newUniqueNumber()
+Account.newUniqueNumber
+Account.newUniqueNumber
