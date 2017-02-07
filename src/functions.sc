@@ -43,3 +43,48 @@ def recursiveSum(args: Int*): Int = {
 }
 
 recursiveSum(1,2,3,4,5,6,7)
+
+def isVowel(c:Char, list:String="aeiou"): Boolean  = {
+  list.contains(c)
+}
+
+isVowel('k')
+isVowel('a')
+
+def vowels(s:String) = {
+  for(c <- s) {
+    if(isVowel(c)) println(c)
+  }
+}
+
+
+def vowels1(s:String) = {
+  for(c <- s if(isVowel(c))) yield c
+}
+
+def vowelsr(s:String):String = {
+  if(s.length == 0) ""
+  else {
+    val c = s(0)
+    val rest = vowelsr(s.substring(1))
+    if(isVowel(c)) c + rest else rest
+  }
+}
+
+def vowelsw(s:String) = {
+
+}
+//vowels("helloo")
+//vowels1("helloo")
+//vowelsr("hellow")
+
+def vowelsm(s:String, list:String="aeiou", ignoreCase:Boolean=false):String = {
+  if(ignoreCase)
+    for(c <- s if(isVowel(c.toLower,list.toLowerCase))) yield c
+  else
+    for(c <- s if(isVowel(c,list))) yield c
+}
+
+vowelsm("helLo","hl")
+vowelsm("hello","hl")
+vowelsm("helLo","hl",true)
