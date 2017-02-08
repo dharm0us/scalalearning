@@ -9,3 +9,45 @@ def concat(s: Seq[String], sep: String) = {s.reduceLeft(_+ " "+_)}
 x_y(2,4)
 //def two_pow(n: Int) =
 concat(Array("Mary","had","a")," ")
+
+def While(cond:() => Boolean, exec: () => Unit) {
+  if(cond()) {
+    exec()
+    While(cond,exec)
+  }
+}
+
+//call by name
+def Whilen(cond: => Boolean, exec:  => Unit) {
+  if(cond) {
+    exec
+    Whilen(cond,exec)
+  }
+}
+
+//currying
+
+def Whilec(cond: => Boolean) (exec:  => Unit) {
+  if(cond) {
+    exec
+    Whilec(cond)(exec)
+  }
+}
+val n = 6
+var i = 1
+var f = 1
+
+val cond = () => {i<n}
+val exec = () => {f *= i; i += 1}
+
+//While(cond,exec)
+//Whilen(i<n, {f *= i; i += 1})
+Whilec(i<n) { f *= i; i += 1;}
+f
+//def strcat(s1: String) = (s2: String) => s1 + s2
+/*def While1 (cond:() => Boolean):Any =  (exec: () => Unit) =>  {
+  if(cond()) {
+    exec()
+    While1(cond)(exec)
+  }
+}*/
