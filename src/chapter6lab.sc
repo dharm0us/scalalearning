@@ -42,8 +42,12 @@ val exec = () => {f *= i; i += 1}
 
 //While(cond,exec)
 //Whilen(i<n, {f *= i; i += 1})
-Whilec(i<n) { f *= i; i += 1;}
+
+//Whilec (i<n) { f *= i; i += 1;}
+//Whilec ({i<n}) ({ f *= i; i += 1;})
+Whilec (i<n) {f *= i; i += 1;}
 f
+//1 to{n}
 //def strcat(s1: String) = (s2: String) => s1 + s2
 /*def While1 (cond:() => Boolean):Any =  (exec: () => Unit) =>  {
   if(cond()) {
